@@ -9,7 +9,7 @@ public class ConnectionFactory {
     // Método para criar uma conexão com o banco de dados
     public Connection criaConexao() {
         String usuario = "root"; // Nome de usuário do banco de dados
-        String senha = "1w3q2e";       // Senha do banco de dados
+        String senha = "Mateus@2022";       // Senha do banco de dados
 
         try {
             // Tenta estabelecer uma conexão com o banco de dados MySQL

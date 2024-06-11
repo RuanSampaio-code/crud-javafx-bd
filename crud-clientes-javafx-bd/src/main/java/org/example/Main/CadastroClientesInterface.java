@@ -215,24 +215,24 @@ public class CadastroClientesInterface extends Application {
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
 
-        Label lblcpf = new Label("Digite o CPF/CNPJ para deletar:");
-        TextField txtcpf = new TextField();
+        Label lblid = new Label("Digite o Id para deletar:");
+        TextField txtId = new TextField();
 
         Button btnDeletar = new Button("Apagar");
 
         btnDeletar.setOnAction(e -> {
             // Aqui você pode implementar a lógica para salvar os dados no banco de dados ou em algum outro lugar
 
-            String cpfcliente = txtcpf.getText();
+            Long id = Long.valueOf(txtId.getText());
             stage.close();
 
-            gerenciaCrud.deletarCliente(cpfcliente);
+            gerenciaCrud.deletarCliente(id);
 
             // Fecha a janela após o cadastro
         });
 
 
-        layout.getChildren().addAll( lblcpf, txtcpf, btnDeletar );
+        layout.getChildren().addAll( lblid, txtId, btnDeletar );
         layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout, 300, 300);

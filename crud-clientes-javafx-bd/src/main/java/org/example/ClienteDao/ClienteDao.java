@@ -133,7 +133,6 @@ public class ClienteDao {
                 String email = resultSet.getString("email");
                 String telefone = resultSet.getString("telefone");
                 String cpfcnpj = resultSet.getString("cpfcnpj");
-
                 String cidade = resultSet.getString("cidade");
 
 
@@ -154,7 +153,7 @@ public class ClienteDao {
 
     //metodo para exclusao
     public void excluir(Cliente clienteExcluir){
-        String sql = "delete from clientes where id = ?";
+        String sql = "delete from cliente where id = ?";
 
         Connection pegaconexao = connectionFactory.criaConexao();
         try {

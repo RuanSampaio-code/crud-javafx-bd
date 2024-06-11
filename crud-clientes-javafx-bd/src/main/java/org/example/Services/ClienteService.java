@@ -48,6 +48,8 @@ public class ClienteService {
             throw new EntidadeNaoEncontradaException("Cliente não está cadastrado: " + id);
         }
 
+
+
         this.clienteDao.excluir(clienteParaExcluir);
 
     }

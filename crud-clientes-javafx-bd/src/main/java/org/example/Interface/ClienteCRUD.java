@@ -13,6 +13,6 @@ public interface ClienteCRUD {
     void atualizarCliente(Long id, Cliente novoCliente);
 
     // Método para deletar um cliente
-    void deletarCliente(String nome);
+    void deletarCliente(Long id);
 
 }

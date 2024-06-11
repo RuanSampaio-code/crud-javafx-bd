@@ -63,6 +63,7 @@ public class ImplementaCRUD implements ClienteCRUD {
 
                 // Exibe uma mensagem indicando que o cliente foi alterado com sucesso
                 System.out.println("Cliente com id " + id + " alterado com sucesso.");
+
                 return; // Interrompe o loop após alterar o cliente
             }
         }
@@ -72,24 +73,24 @@ public class ImplementaCRUD implements ClienteCRUD {
 
 
     @Override
-    public void deletarCliente(String cpfcnpj) {
+    public void deletarCliente(Long id) {
 
-
+        List<Cliente> contasbd = clienteService.listarCadastroDeClientes();
         // Percorre a lista de clientes
-        for (int i = 0; i < contas.size(); i++) {
-            Cliente cliente = contas.get(i);
+        for (int i = 0; i < contasbd.size(); i++) {
+            Cliente cliente = contasbd.get(i);
 
             // Se encontrar um cliente com o CPF fornecido, remove da lista
-            if (cliente.getCpfcnpj().equals(cpfcnpj)) {
-                contas.remove(i);
+            if (cliente.getId().equals(id)) {
+                clienteService.excluiClientePeloId(id);
                 /* System.out.println("Cliente com CPF " + cpfcnpj + " removido com sucesso."); */
-                exibirAlerta("Sucesso", "cpf:" + cpfcnpj + "deletado com sucesso");
+                exibirAlerta("Sucesso", "ID:" + id + "deletado com sucesso");
                 return; // Interrompe o loop após remover o cliente
             }
         }
         // Se não encontrar nenhum cliente com o CPF fornecido, exibe uma mensagem de erro
         System.out.println();
-        exibirAlerta("Erro", "Cliente com CPF " + cpfcnpj + " não encontrado na lista.");
+        exibirAlerta("Erro", "Cliente com CPF " + id + " não encontrado na lista.");
 
     }
 
@@ -192,6 +193,7 @@ public class ImplementaCRUD implements ClienteCRUD {
             cliente.setTelefone(txtTelefone.getText());
 
             clienteService.alteracaoDeCliente(cliente.getId(), cliente);
+            exibirAlerta("feito", "cadastro Alterado com suceso");
 
             // Fecha a janela após a atualização
             stage.close();
